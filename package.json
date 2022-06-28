@@ -1,0 +1,24 @@
+{
+  "name": "unified-external-interface",
+  "version": "1.0.0",
+  "description": "有两个提供登陆的三方服务 —— Firebase 和 Supabase，分别提供了五种能力，",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ardor-zhang/unified-external-interface.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ardor-zhang/unified-external-interface/issues"
+  },
+  "homepage": "https://github.com/ardor-zhang/unified-external-interface#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^1.35.4",
+    "firebase": "^9.8.4"
+  }
+}
