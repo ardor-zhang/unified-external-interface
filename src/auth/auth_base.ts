@@ -1,6 +1,6 @@
 import { User } from "./types";
 
-export default abstract class AuthProvider {
+export default abstract class AuthBase {
   abstract initialize(): void;
   abstract get currentUser(): User;
   abstract createUser(email: string, password: string): Promise<User>;

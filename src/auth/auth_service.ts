@@ -1,5 +1,5 @@
 import { User } from "./types";
-import AuthProvider from "./auth_provider";
+import AuthBase from "./auth_base";
 import FirebaseAuthProvider from "./provider/firebase_auth_provider";
 import SupabaseAuthProvider from "./provider/supabase_auth_provider";
 
@@ -10,8 +10,8 @@ const providerMap = {
 
 export type ProviderEnum = keyof typeof providerMap;
 
-export default class AuthService implements AuthProvider {
-  constructor(private provider: AuthProvider) {}
+export default class AuthService implements AuthBase {
+  constructor(private provider: AuthBase) {}
 
   static instance(provider: ProviderEnum) {
     return new AuthService(providerMap[provider]);

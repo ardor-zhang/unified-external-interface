@@ -1,5 +1,5 @@
 import { User } from "../types";
-import AuthProvider from "../auth_provider";
+import AuthBase from "../auth_base";
 import { initializeApp } from "firebase/app";
 import {
   Auth,
@@ -14,7 +14,7 @@ import {
   GenericAuthException,
 } from "../auth_exceptions";
 
-export default class FirebaseAuthProvider implements AuthProvider {
+export default class FirebaseAuthProvider implements AuthBase {
   auth: Auth;
   // 单例
   static instance: FirebaseAuthProvider;
@@ -57,14 +57,15 @@ export default class FirebaseAuthProvider implements AuthProvider {
         isEmailVerified: user.emailVerified,
       };
     } catch (e) {
-      if (e.code == "email-already-in-use") {
-        throw new EmailAlreadyInUseAuthException();
-      } else if (e.code == "weak-password") {
-        throw new WeakPasswordAuthException();
-      } else if (e.code == "invalid-email") {
-        throw new InvalidEmailAuthException();
-      } else {
-        throw new GenericAuthException();
+      switch (e.code) {
+        case "email-already-in-use":
+          throw new EmailAlreadyInUseAuthException();
+        case "weak-password":
+          throw new WeakPasswordAuthException();
+        case "invalid-email":
+          throw new InvalidEmailAuthException();
+        default:
+          throw new GenericAuthException();
       }
     }
   }

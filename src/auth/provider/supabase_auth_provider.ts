@@ -1,5 +1,5 @@
 import { User } from "../types";
-import AuthProvider from "../auth_provider";
+import AuthBase from "../auth_base";
 import { createClient, SupabaseClient, AuthUser } from "@supabase/supabase-js";
 import {
   WeakPasswordAuthException,
@@ -8,7 +8,7 @@ import {
   GenericAuthException,
 } from "../auth_exceptions";
 
-export default class SupabaseAuthProvider implements AuthProvider {
+export default class SupabaseAuthProvider implements AuthBase {
   supabase: SupabaseClient;
 
   // 单例
